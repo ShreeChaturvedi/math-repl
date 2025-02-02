@@ -1,0 +1,14 @@
+# Build artifacts
+build*/
+**/*.o
+**/*.dSYM/
+/repl
+
+# REPL history file
+.repl_history
+
+# OS cruft
+.DS_Store
+
+# Local tooling
+.claude/
