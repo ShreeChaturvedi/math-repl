@@ -1,0 +1,14 @@
+PROJECT_NAME           = "REPL Calculator"
+PROJECT_BRIEF          = "C++23 REPL calculator"
+OUTPUT_DIRECTORY       = "docs/doxygen"
+
+INPUT                  = include
+FILE_PATTERNS          = *.hpp
+RECURSIVE              = YES
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+EXTRACT_ALL            = YES
+WARN_IF_UNDOCUMENTED   = NO
+QUIET                  = YES
