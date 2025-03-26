@@ -1,0 +1,19 @@
+<svg width="860" height="200" viewBox="0 0 860 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="860" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1f2933"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="860" height="200" rx="24" fill="url(#bg)"/>
+  <rect x="36" y="36" width="788" height="128" rx="18" fill="#111827"/>
+  <text x="72" y="96" font-family=""Courier New", Courier, monospace" font-size="36" fill="#f8fafc">
+    REPL Calculator
+  </text>
+  <text x="72" y="132" font-family=""Courier New", Courier, monospace" font-size="18" fill="#cbd5f5">
+    Tiny C++23 expression language with functions, ternary, and history
+  </text>
+  <circle cx="784" cy="72" r="10" fill="#38b2ac"/>
+  <circle cx="814" cy="72" r="10" fill="#f4a261"/>
+  <circle cx="754" cy="72" r="10" fill="#94a3b8"/>
+</svg>
