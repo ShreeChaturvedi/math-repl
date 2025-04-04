@@ -9,7 +9,19 @@
 #include <string_view>
 #include <vector>
 
+#if !defined(REPL_USE_LINENOISE)
+#define REPL_USE_LINENOISE 0
+#endif
+
+#if REPL_USE_LINENOISE
 #include "linenoise.h"
+#endif
+
+#if defined(_WIN32)
+#include <io.h>
+#else
+#include <unistd.h>
+#endif
 
 #include "repl/evaluator.hpp"
 #include "repl/errors.hpp"
@@ -256,36 +268,77 @@ bool handle_command(const std::string& line, State& state,
     return true;
 }
 
+bool is_interactive() {
+#if defined(_WIN32)
+    return _isatty(_fileno(stdin)) != 0;
+#else
+    return isatty(fileno(stdin)) != 0;
+#endif
+}
+
+bool read_line(std::string& out, bool use_linenoise, bool interactive) {
+    if (use_linenoise) {
+#if REPL_USE_LINENOISE
+        char* raw = linenoise("> ");
+        if (!raw) {
+            return false;
+        }
+        out.assign(raw);
+        std::free(raw);
+        return true;
+#else
+        return false;
+#endif
+    }
+
+    if (interactive) {
+        std::cout << "> " << std::flush;
+    }
+    return static_cast<bool>(std::getline(std::cin, out));
+}
+
 }  // namespace repl::detail
 
 int main() {
     repl::State state;
     std::vector<std::string> history;
 
-    linenoiseSetMultiLine(1);
-    linenoiseHistorySetMaxLen(static_cast<int>(repl::detail::kHistoryMax));
-    linenoiseHistoryLoad(repl::detail::kHistoryFile.data());
+    const bool interactive = repl::detail::is_interactive();
+    const bool use_linenoise = interactive && REPL_USE_LINENOISE;
 
-    repl::detail::clear_screen();
-    std::cout << "Type 'help' for commands." << '\n';
+#if REPL_USE_LINENOISE
+    if (use_linenoise) {
+        linenoiseSetMultiLine(1);
+        linenoiseHistorySetMaxLen(static_cast<int>(repl::detail::kHistoryMax));
+        linenoiseHistoryLoad(repl::detail::kHistoryFile.data());
+    }
+#endif
+
+    if (interactive) {
+        repl::detail::clear_screen();
+        std::cout << "Type 'help' for commands." << '\n';
+    }
 
     while (true) {
-        char* raw = linenoise("> ");
-        if (!raw) {
+        std::string input;
+        if (!repl::detail::read_line(input, use_linenoise, interactive)) {
             break;
         }
-
-        std::string input(raw);
-        std::free(raw);
 
         std::string processed = repl::detail::strip_comments(input);
         if (processed.empty()) {
             continue;
         }
 
-        linenoiseHistoryAdd(input.c_str());
-        linenoiseHistorySave(repl::detail::kHistoryFile.data());
-        history.push_back(input);
+        if (use_linenoise) {
+#if REPL_USE_LINENOISE
+            linenoiseHistoryAdd(input.c_str());
+            linenoiseHistorySave(repl::detail::kHistoryFile.data());
+#endif
+        }
+        if (interactive) {
+            history.push_back(input);
+        }
 
         try {
             if (processed == "exit" || processed == "quit") {
