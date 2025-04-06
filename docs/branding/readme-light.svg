@@ -1,19 +1,9 @@
 <svg width="860" height="200" viewBox="0 0 860 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="860" y2="200" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f5f2eb"/>
-      <stop offset="1" stop-color="#e4efe9"/>
-    </linearGradient>
-  </defs>
-  <rect width="860" height="200" rx="24" fill="url(#bg)"/>
-  <rect x="36" y="36" width="788" height="128" rx="18" fill="#ffffff"/>
-  <text x="72" y="96" font-family=""Courier New", Courier, monospace" font-size="36" fill="#222">
-    REPL Calculator
-  </text>
-  <text x="72" y="132" font-family=""Courier New", Courier, monospace" font-size="18" fill="#555">
-    Tiny C++23 expression language with functions, ternary, and history
-  </text>
-  <circle cx="784" cy="72" r="10" fill="#2c7a7b"/>
-  <circle cx="814" cy="72" r="10" fill="#e76f51"/>
-  <circle cx="754" cy="72" r="10" fill="#264653"/>
+  <rect width="860" height="200" rx="24" fill="#f2f2f2"/>
+  <rect x="28" y="28" width="804" height="144" rx="18" fill="#ffffff"/>
+  <circle cx="110" cy="100" r="44" stroke="#111111" stroke-width="6" fill="none"/>
+  <path d="M141 82 L152 70 L154 86 Z" fill="#111111"/>
+  <path d="M142 82 C132 60 106 52 86 61" stroke="#111111" stroke-width="6" stroke-linecap="round"/>
+  <text x="190" y="112" font-family="Courier New, Courier, monospace" font-size="48" fill="#111111">REPL</text>
+  <text x="190" y="146" font-family="Courier New, Courier, monospace" font-size="18" fill="#4a4a4a">Math REPL in C++23</text>
 </svg>
