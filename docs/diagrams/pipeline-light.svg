@@ -1,0 +1,20 @@
+<svg width="860" height="220" viewBox="0 0 860 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="860" height="220" rx="18" fill="#f7f7f7"/>
+  <rect x="40" y="70" width="160" height="80" rx="12" fill="#ffffff" stroke="#222222" stroke-width="2"/>
+  <rect x="240" y="70" width="160" height="80" rx="12" fill="#ffffff" stroke="#222222" stroke-width="2"/>
+  <rect x="440" y="70" width="160" height="80" rx="12" fill="#ffffff" stroke="#222222" stroke-width="2"/>
+  <rect x="640" y="70" width="160" height="80" rx="12" fill="#ffffff" stroke="#222222" stroke-width="2"/>
+  <text x="120" y="108" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="16" fill="#111111">Input</text>
+  <text x="320" y="108" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="16" fill="#111111">Tokens</text>
+  <text x="520" y="108" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="16" fill="#111111">AST</text>
+  <text x="720" y="108" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="16" fill="#111111">Result</text>
+  <path d="M200 110 H240" stroke="#444444" stroke-width="3" stroke-linecap="round"/>
+  <path d="M400 110 H440" stroke="#444444" stroke-width="3" stroke-linecap="round"/>
+  <path d="M600 110 H640" stroke="#444444" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="235,104 245,110 235,116" fill="#444444"/>
+  <polygon points="435,104 445,110 435,116" fill="#444444"/>
+  <polygon points="635,104 645,110 635,116" fill="#444444"/>
+  <text x="120" y="150" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Tokenizer</text>
+  <text x="320" y="150" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Parser</text>
+  <text x="520" y="150" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Evaluator</text>
+</svg>
