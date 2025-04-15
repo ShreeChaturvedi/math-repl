@@ -14,7 +14,7 @@
   <polygon points="235,104 245,110 235,116" fill="#444444"/>
   <polygon points="435,104 445,110 435,116" fill="#444444"/>
   <polygon points="635,104 645,110 635,116" fill="#444444"/>
-  <text x="120" y="150" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Tokenizer</text>
-  <text x="320" y="150" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Parser</text>
-  <text x="520" y="150" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Evaluator</text>
+  <text x="120" y="136" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Tokenizer</text>
+  <text x="320" y="136" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Parser</text>
+  <text x="520" y="136" text-anchor="middle" font-family="Courier New, Courier, monospace" font-size="12" fill="#666666">Evaluator</text>
 </svg>
