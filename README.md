@@ -30,27 +30,20 @@ cmake --build --preset dev
 ./build/src/repl
 ```
 
-## Usage (Captured Output)
-
-Input used:
+## Usage
 
 ```text
-x = 2
-square(n) = n * n
-square(5)
-3 > 2 ? 10 : 20
-pi
-_ * 3
-```
-
-Output captured from `printf ... | ./build/src/repl`:
-
-```text
+> x = 2
 2
+> square(n) = n * n
 Defined square(n)
+> square(5)
 25
+> 3 > 2 ? 10 : 20
 10
+> pi
 3.14159
+> _ * 3
 9.42478
 ```
 
@@ -69,25 +62,17 @@ Defined square(n)
 
 ## Built-in Functions
 
-Unary:
+Unary: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`,
+`asinh`, `acosh`, `atanh`, `sqrt`, `cbrt`, `exp`, `ln`, `log`, `log2`, `abs`,
+`floor`, `ceil`, `round`, `trunc`.
 
-- `sin(1)`, `cos(1)`, `tan(1)`
-- `asin(1)`, `acos(1)`, `atan(1)`
-- `sinh(1)`, `cosh(1)`, `tanh(1)`
-- `asinh(1)`, `acosh(1)`, `atanh(1)`
-- `sqrt(1)`, `cbrt(1)`
-- `exp(1)`, `ln(1)`, `log(1)`, `log2(1)`
-- `abs(1)`, `floor(1)`, `ceil(1)`, `round(1)`, `trunc(1)`
-
-Binary:
-
-- `pow(2)`, `fmod(2)`, `atan2(2)`
+Binary: `pow`, `fmod`, `atan2`.
 
 ## Constants
 
 `pi, e, tau`
 
-## How It Works
+## My Approach
 
 <p align="center">
   <img src="docs/diagrams/pipeline-light.svg#gh-light-mode-only" width="860" alt="Tokenizer → Parser → Evaluator">
