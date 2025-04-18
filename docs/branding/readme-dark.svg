@@ -1,6 +1,6 @@
 <svg width="860" height="200" viewBox="0 0 860 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="110" cy="100" r="44" stroke="#f0f0f0" stroke-width="6" fill="none" stroke-linecap="round"/>
-  <path d="M152 78 L168 66 L165 88 Z" fill="#f0f0f0"/>
+  <circle cx="110" cy="100" r="44" stroke="#f0f0f0" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <path d="M159.57 89.86 L161.96 70 L141.18 82 Z" fill="#f0f0f0"/>
   <text x="190" y="112" font-family="Courier New, Courier, monospace" font-size="48" fill="#f0f0f0">REPL</text>
   <text x="190" y="146" font-family="Courier New, Courier, monospace" font-size="18" fill="#cfcfcf">Math REPL in C++23</text>
 </svg>
