@@ -23,6 +23,10 @@ target_link_libraries(repl
         repl_core
 )
 
+install(TARGETS repl
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+
 if (WIN32)
     target_compile_definitions(repl PRIVATE REPL_USE_LINENOISE=0)
 else()
