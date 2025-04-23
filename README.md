@@ -30,6 +30,23 @@ cmake --build --preset dev
 ./build/src/repl
 ```
 
+## Installation
+
+Homebrew (builds from source):
+
+```bash
+brew install --build-from-source https://raw.githubusercontent.com/ShreeChaturvedi/math-repl/main/packaging/homebrew/math-repl.rb
+```
+
+Packages are attached to GitHub Releases (`.tar.gz` for macOS/Linux, `.zip` for
+Windows). To build a local package:
+
+```bash
+cmake -S . -B build -DREPL_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release
+cd build && cpack -C Release
+```
+
 ## Usage
 
 ```text
