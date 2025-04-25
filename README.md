@@ -47,6 +47,12 @@ cmake --build build --config Release
 cd build && cpack -C Release
 ```
 
+Container package:
+
+```bash
+docker run --rm -it ghcr.io/shreechaturvedi/math-repl:latest
+```
+
 ## Usage
 
 ```text
