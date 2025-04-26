@@ -1,0 +1,9 @@
+build
+build-*
+.git
+.github
+.vscode
+**/*.o
+**/*.obj
+**/*.dSYM
+**/.DS_Store
