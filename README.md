@@ -10,9 +10,8 @@
 [![c++](https://img.shields.io/badge/C%2B%2B-23-blue.svg)](https://isocpp.org/)
 
 Math REPL is a small C++23 expression language with a REPL loop, user-defined
-functions, and an intentionally readable implementation. This README is more
-educational than the other repos: it walks through how the tokenizer, parser,
-and evaluator fit together with diagrams and concrete examples.
+functions, and an intentionally readable implementation. The sections below
+walk through tokenization, parsing, and evaluation with diagrams and examples.
 
 ## Quick Start
 
