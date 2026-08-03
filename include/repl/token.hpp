@@ -9,7 +9,7 @@
 
 namespace repl {
 
-/** @brief Token categories produced by the lexer. */
+/** @brief Token categories produced by the tokenizer/lexer. */
 enum class TType {
     Number,
     Identifier,
@@ -33,7 +33,7 @@ enum class TType {
     Comma,
 };
 
-/** @brief Name type for variables and functions. */
+/** @brief Identifier string type for variables and functions. */
 using Identifier = std::string;
 /** @brief Parameter list type for user-defined functions. */
 using Identifiers = std::vector<Identifier>;
