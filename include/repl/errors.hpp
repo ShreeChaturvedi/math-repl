@@ -5,19 +5,19 @@
 
 namespace repl {
 
-/** @brief Error raised when parsing fails. */
+/** @brief Error raised when tokenization or parsing fails. */
 class ParseError : public std::runtime_error {
 public:
     explicit ParseError(const std::string& message) : std::runtime_error(message) {}
 };
 
-/** @brief Error raised when evaluation fails. */
+/** @brief Error raised when expression evaluation fails at runtime. */
 class EvalError : public std::runtime_error {
 public:
     explicit EvalError(const std::string& message) : std::runtime_error(message) {}
 };
 
-/** @brief Error raised for invalid REPL commands. */
+/** @brief Error raised for invalid or unknown REPL meta-commands. */
 class CommandError : public std::runtime_error {
 public:
     explicit CommandError(const std::string& message) : std::runtime_error(message) {}
