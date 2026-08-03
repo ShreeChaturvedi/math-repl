@@ -85,3 +85,18 @@ TEST_CASE("Evaluator handles division and modulo by zero") {
     REQUIRE_THROWS_AS(repl::process_query("1 / 0", state), repl::EvalError);
     REQUIRE_THROWS_AS(repl::process_query("5 % 0", state), repl::EvalError);
 }
+
+TEST_CASE("Evaluator handles scientific notation literals") {
+    repl::State state;
+    auto pos = repl::process_query("1e3 + 2.5e-2", state);
+    REQUIRE(pos.value);
+    REQUIRE(*pos.value == Approx(1000.025));
+
+    auto neg = repl::process_query("1E+2 * 2e-1", state);
+    REQUIRE(neg.value);
+    REQUIRE(*neg.value == Approx(20.0));
+
+    auto edge = repl::process_query("1e0", state);
+    REQUIRE(edge.value);
+    REQUIRE(*edge.value == Approx(1.0));
+}
