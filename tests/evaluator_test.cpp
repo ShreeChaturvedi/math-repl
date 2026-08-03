@@ -100,3 +100,41 @@ TEST_CASE("Evaluator handles scientific notation literals") {
     REQUIRE(edge.value);
     REQUIRE(*edge.value == Approx(1.0));
 }
+
+TEST_CASE("Evaluator raises domain errors for invalid math") {
+    repl::State state;
+    REQUIRE_THROWS_AS(repl::process_query("sqrt(-1)", state), repl::EvalError);
+    REQUIRE_THROWS_AS(repl::process_query("log(0)", state), repl::EvalError);
+    REQUIRE_THROWS_AS(repl::process_query("asin(2)", state), repl::EvalError);
+    REQUIRE_THROWS_AS(repl::process_query("acos(-2)", state), repl::EvalError);
+    REQUIRE_THROWS_AS(repl::process_query("ln(-1)", state), repl::EvalError);
+    REQUIRE_THROWS_AS(repl::process_query("(-1) ^ 0.5", state), repl::EvalError);
+}
+
+TEST_CASE("Evaluator supports min max hypot and sign") {
+    repl::State state;
+
+    auto min_v = repl::process_query("min(3, -1)", state);
+    REQUIRE(min_v.value);
+    REQUIRE(*min_v.value == Approx(-1.0));
+
+    auto max_v = repl::process_query("max(3, -1)", state);
+    REQUIRE(max_v.value);
+    REQUIRE(*max_v.value == Approx(3.0));
+
+    auto hyp = repl::process_query("hypot(3, 4)", state);
+    REQUIRE(hyp.value);
+    REQUIRE(*hyp.value == Approx(5.0));
+
+    auto s1 = repl::process_query("sign(-7)", state);
+    REQUIRE(s1.value);
+    REQUIRE(*s1.value == Approx(-1.0));
+
+    auto s0 = repl::process_query("sign(0)", state);
+    REQUIRE(s0.value);
+    REQUIRE(*s0.value == Approx(0.0));
+
+    auto sp = repl::process_query("sign(2.5)", state);
+    REQUIRE(sp.value);
+    REQUIRE(*sp.value == Approx(1.0));
+}

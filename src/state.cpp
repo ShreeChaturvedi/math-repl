@@ -69,10 +69,26 @@ const BuiltinMap& builtin_functions() {
         add(make_unary("ceil", "Round up", std::ceil));
         add(make_unary("round", "Round to nearest", std::round));
         add(make_unary("trunc", "Truncate fractional part", std::trunc));
+        add(make_unary("sign", "Sign (-1, 0, or 1)",
+                       +[](double x) -> double {
+                           if (x > 0.0) {
+                               return 1.0;
+                           }
+                           if (x < 0.0) {
+                               return -1.0;
+                           }
+                           return 0.0;
+                       }));
 
         add(make_binary("pow", "Power", std::pow));
         add(make_binary("fmod", "Floating-point modulo", std::fmod));
         add(make_binary("atan2", "Quadrant-aware arctangent", std::atan2));
+        add(make_binary("min", "Minimum of two values",
+                        +[](double a, double b) { return std::fmin(a, b); }));
+        add(make_binary("max", "Maximum of two values",
+                        +[](double a, double b) { return std::fmax(a, b); }));
+        add(make_binary("hypot", "Euclidean distance sqrt(a^2 + b^2)",
+                        +[](double a, double b) { return std::hypot(a, b); }));
 
         return map;
     }();
