@@ -86,9 +86,9 @@ Defined square(n)
 
 Unary: `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`,
 `asinh`, `acosh`, `atanh`, `sqrt`, `cbrt`, `exp`, `ln`, `log`, `log2`, `abs`,
-`floor`, `ceil`, `round`, `trunc`.
+`floor`, `ceil`, `round`, `trunc`, `sign`.
 
-Binary: `pow`, `fmod`, `atan2`.
+Binary: `pow`, `fmod`, `atan2`, `min`, `max`, `hypot`.
 
 ## Constants
 

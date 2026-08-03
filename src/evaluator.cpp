@@ -26,6 +26,13 @@ std::string join_params(const Identifiers& params) {
 
 double eval_value(Expression& expr, State& state, EvalContext& ctx);
 
+double require_finite(double value, std::string_view context) {
+    if (std::isnan(value) || std::isinf(value)) {
+        throw EvalError(std::format("Domain error in {}", context));
+    }
+    return value;
+}
+
 double eval_binary(BinaryNode& node, State& state, EvalContext& ctx) {
     switch (node.op) {
         case TType::Plus:
@@ -49,8 +56,10 @@ double eval_binary(BinaryNode& node, State& state, EvalContext& ctx) {
             return std::fmod(eval_value(*node.left, state, ctx), rhs);
         }
         case TType::Caret:
-            return std::pow(eval_value(*node.left, state, ctx),
-                            eval_value(*node.right, state, ctx));
+            return require_finite(
+                std::pow(eval_value(*node.left, state, ctx),
+                         eval_value(*node.right, state, ctx)),
+                "'^'");
         case TType::Less:
             return eval_value(*node.left, state, ctx) < eval_value(*node.right, state, ctx);
         case TType::LessEqual:
@@ -97,7 +106,8 @@ double eval_function_call(FnNode& node, State& state, EvalContext& ctx) {
         for (const auto& arg : node.args) {
             args.push_back(eval_value(*arg, state, ctx));
         }
-        return spec.fn(args);
+        return require_finite(spec.fn(args),
+                              std::format("function '{}'", node.name));
     }
 
     auto it = state.fns.find(node.name);
