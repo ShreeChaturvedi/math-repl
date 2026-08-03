@@ -1,8 +1,8 @@
-# REPL Calculator Design
+# Math REPL Design
 
 ## Overview
 
-The calculator is a three-stage interpreter:
+Math REPL is a three-stage interpreter:
 
 1. **Tokenizer**: converts source text into tokens.
 2. **Parser**: builds an AST with precedence rules.
