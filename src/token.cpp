@@ -186,7 +186,9 @@ Tokens tokenize(std::string_view input) {
                 char current = input[pos];
                 if (current == '.') {
                     if (seen_dot) {
-                        break;
+                        throw ParseError(std::format(
+                            "Invalid number with multiple decimal points starting at position {}",
+                            start));
                     }
                     seen_dot = true;
                     ++pos;
@@ -198,8 +200,31 @@ Tokens tokenize(std::string_view input) {
                 ++pos;
             }
 
+            // Scientific notation: [eE][+-]?digits
+            if (pos < input.size() && (input[pos] == 'e' || input[pos] == 'E')) {
+                std::size_t exp_marker = pos;
+                ++pos;
+                if (pos < input.size() && (input[pos] == '+' || input[pos] == '-')) {
+                    ++pos;
+                }
+                if (pos >= input.size() || !is_digit(input[pos])) {
+                    throw ParseError(std::format(
+                        "Invalid scientific notation at position {}: exponent requires digits",
+                        exp_marker));
+                }
+                while (pos < input.size() && is_digit(input[pos])) {
+                    ++pos;
+                }
+            }
+
             std::string number_text{input.substr(start, pos - start)};
-            result.push_back(Token::number(std::stod(number_text)));
+            try {
+                result.push_back(Token::number(std::stod(number_text)));
+            } catch (const std::out_of_range&) {
+                throw ParseError(std::format("Number out of range: '{}'", number_text));
+            } catch (const std::invalid_argument&) {
+                throw ParseError(std::format("Invalid number: '{}'", number_text));
+            }
             --pos;
             continue;
         }
